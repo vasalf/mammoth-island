@@ -97,6 +97,11 @@ def take_part(my_field, figure, start_point):
     my_field.figures.pop()
     return ret
 
+print("""
+Please, type two numbers:
+g.x
+g.y
+where g is acceleration of free falling""")
 
 wight = 50
 height = 30
