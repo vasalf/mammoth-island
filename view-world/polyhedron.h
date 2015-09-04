@@ -4,7 +4,7 @@
 #include <vector>
 #include "mover.h"
 #include "geom.h"
-#include "glheader.h"
+#include "glinclude.h"
 
 /* This is a helper class to Polyhedron.
  * Please, do not construct it directly or use it's shadowed with "__" methods

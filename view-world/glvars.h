@@ -1,8 +1,8 @@
 #ifndef GLVARS_H_
 #define GLVARS_H_
 
-#include "glheader.h"
+#include "glinclude.h"
 
-GLuint glWorldLocation;
+extern GLuint glWorldLocation;
 
 #endif //GLVARS_H_

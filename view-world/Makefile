@@ -1,10 +1,13 @@
 CXX=g++
-CXXFLAGS=-Wall -Wextra -Werror -Wshadow --std=c++11 -O2 -pipe
+CXXFLAGS=-Wall -Wextra -Werror -Wshadow --std=c++11 -O2 -pipe -lGL -lGLU -lglut -lGLEW
 OBJDIR=obj
-OBJS=$(OBJDIR)/matrix.o $(OBJDIR)/mover.o $(OBJDIR)/geom.o $(OBJDIR)/polyhedron.o
+OBJS=$(OBJDIR)/matrix.o $(OBJDIR)/mover.o $(OBJDIR)/geom.o $(OBJDIR)/polyhedron.o $(OBJDIR)/glmodule.o $(OBJDIR)/render.o $(OBJDIR)/main.o
 
 
-all: $(OBJDIR) $(OBJS)
+all: view-world
+
+view-world: $(OBJDIR) $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -oview-world
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
@@ -20,6 +23,15 @@ $(OBJDIR)/geom.o: geom.h geom.cpp
 
 $(OBJDIR)/polyhedron.o: polyhedron.h polyhedron.cpp
 	$(CXX) $(CXXFLAGS) polyhedron.cpp -c -o$(OBJDIR)/polyhedron.o
+
+$(OBJDIR)/glmodule.o: glmodule.cpp glvars.h glheader.h
+	$(CXX) $(CXXFLAGS) glmodule.cpp -c -o$(OBJDIR)/glmodule.o
+
+$(OBJDIR)/render.o: render.cpp render.h
+	$(CXX) $(CXXFLAGS) render.cpp -c -o$(OBJDIR)/render.o
+
+$(OBJDIR)/main.o: main.cpp
+	$(CXX) $(CXXFLAGS) main.cpp -c -o$(OBJDIR)/main.o
 
 clear:
 	rm -Rf $(OBJDIR)
