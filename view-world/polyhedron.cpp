@@ -30,11 +30,24 @@ void Polygon::__draw() const
     glDisableVertexAttribArray(0);
 }
 
+std::vector<vect> Polygon::__get_poly() const
+{
+    return poly;
+}
+
 Polyhedron::Polyhedron(std::vector<std::vector<vect> > pts)
 {
     surfaces.resize(pts.size());
     for (int i = 0; i < (int)surfaces.size(); i++)
-        surfaces[i] = *(new Polygon(pts[i], &mvr)); 
+        surfaces[i] = Polygon(pts[i], &mvr); 
+}
+
+Polyhedron::Polyhedron(const Polyhedron& other)
+{
+    mvr = other.mvr;
+    surfaces.resize(other.surfaces.size());
+    for (int i = 0; i < (int)surfaces.size(); i++)
+        surfaces[i] = Polygon(other.surfaces[i].__get_poly(), &mvr);
 }
 
 const Polygon& Polyhedron::operator[](const int& i) const
@@ -45,6 +58,11 @@ const Polygon& Polyhedron::operator[](const int& i) const
 Polygon& Polyhedron::operator[](const int& i)
 {
     return surfaces[i];
+}
+
+Mover& Polyhedron::GetMover()
+{
+    return mvr;
 }
 
 void Polyhedron::Draw() const

@@ -58,32 +58,32 @@ void Mover::Scale(float sc)
     scale *= sc;
 }
 
-vect Mover::GetPosition()
+vect Mover::GetPosition() const
 {
     return position;
 }
 
-float Mover::GetXAngle()
+float Mover::GetXAngle() const
 {
     return xang;
 }
 
-float Mover::GetYAngle()
+float Mover::GetYAngle() const
 {
     return yang;
 }
 
-float Mover::GetZAngle()
+float Mover::GetZAngle() const
 {
     return zang;
 }
 
-float Mover::GetScale()
+float Mover::GetScale() const
 {
     return scale;
 }
 
-Matrix Mover::GetMatrix()
+Matrix Mover::GetMatrix() const
 {
-   return ScaleMatrix(scale) * XAngleMatrix(xang) * YAngleMatrix(yang) * ZAngleMatrix(xang) * PositionMatrix(position); 
+   return ScaleMatrix(scale) * XAngleMatrix(xang) * YAngleMatrix(yang) * ZAngleMatrix(zang) * PositionMatrix(position); 
 }

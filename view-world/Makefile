@@ -35,3 +35,4 @@ $(OBJDIR)/main.o: main.cpp
 
 clear:
 	rm -Rf $(OBJDIR)
+	rm -Rf view-world

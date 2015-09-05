@@ -23,13 +23,13 @@ class Mover
     void ZRotate(float ang);
     void Scale(float sc);
 
-    vect GetPosition();
-    float GetXAngle();
-    float GetYAngle();
-    float GetZAngle();
-    float GetScale();
+    vect GetPosition() const;
+    float GetXAngle() const;
+    float GetYAngle() const;
+    float GetZAngle() const;
+    float GetScale() const;
 
-    Matrix GetMatrix();
+    Matrix GetMatrix() const;
 };
 
 #endif //MOVER_H_

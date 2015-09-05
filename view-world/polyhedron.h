@@ -20,6 +20,7 @@ class Polygon
     Polygon();
     Polygon(std::vector<vect> _poly, Mover* _mover);
     void __draw() const;
+    std::vector<vect> __get_poly() const;
 };
 
 class Polyhedron
@@ -28,6 +29,7 @@ class Polyhedron
     Mover mvr;
   public:
     Polyhedron(std::vector<std::vector<vect> > pts);
+    Polyhedron(const Polyhedron& other);
     Mover& GetMover();
     const Polygon& operator[](const int& i) const;
     Polygon& operator[](const int& i);
