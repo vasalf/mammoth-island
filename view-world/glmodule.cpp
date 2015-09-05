@@ -1,6 +1,7 @@
 #include <fstream>
 #include <cstring>
 #include <cassert>
+#include <iostream>
 #include "glheader.h"
 #include "glvars.h"
 
@@ -22,12 +23,14 @@ void init_gl(int* argc, char** argv)
     glutInitWindowPosition(100, 100);
     glutCreateWindow("View world");
 
-    init_glut_cb(); 
+    init_glut_cb();
+    assert(glewInit() == GLEW_OK);
 }
 
 static string read_file(string filename)
 {
     ifstream fin(filename);
+    assert(fin);
     string s;
 
     fin.seekg(0, ios::end);
@@ -50,6 +53,13 @@ static void add_shader(GLuint program, const char* text, GLenum type)
     glCompileShader(sobj);
     GLint success;
     glGetShaderiv(sobj, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        cerr << "Shader compilation error" << endl;
+        GLchar log[1024];
+        glGetShaderInfoLog(sobj, 1024, NULL, log);
+        cerr << log << endl;
+    }
     assert(success);
     glAttachShader(program, sobj);
 }

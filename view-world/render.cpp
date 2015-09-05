@@ -1,5 +1,6 @@
 #include "render.h"
 #include "glvars.h"
+#include <iostream>
 
 using namespace std;
 

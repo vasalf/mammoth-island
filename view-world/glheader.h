@@ -6,7 +6,7 @@
 #include <vector>
 #include "polyhedron.h"
 
-void init_gl(int argc, char** argv);
+void init_gl(int* argc, char** argv);
 void compile_shaders(std::string vsh_filename, std::string fsh_filename);
 
 void render_scene();
