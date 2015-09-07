@@ -1,5 +1,7 @@
 CXX=g++
-CXXFLAGS=-Wall -Wextra -Werror -Wshadow --std=c++11 -g  -march=native -pipe -lGL -lGLU -lglut -lGLEW
+SRCDIR=src
+INCLUDEDIR=$(SRCDIR)/include
+CXXFLAGS=-Wall -Wextra -Werror -Wshadow --std=c++11 -g  -march=native -pipe -lGL -lGLU -lglut -lGLEW -I$(INCLUDEDIR)
 OBJDIR=obj
 OBJS=$(OBJDIR)/matrix.o $(OBJDIR)/mover.o $(OBJDIR)/geom.o $(OBJDIR)/polyhedron.o $(OBJDIR)/glmodule.o $(OBJDIR)/render.o $(OBJDIR)/main.o
 
@@ -12,26 +14,26 @@ view-world: $(OBJDIR) $(OBJS)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-$(OBJDIR)/matrix.o: matrix.h matrix.cpp
-	$(CXX) $(CXXFLAGS) matrix.cpp -c -o$(OBJDIR)/matrix.o
+$(OBJDIR)/matrix.o: $(INCLUDEDIR)/matrix.h $(SRCDIR)/matrix.cpp
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/matrix.cpp -c -o$(OBJDIR)/matrix.o
 
-$(OBJDIR)/mover.o: mover.h mover.cpp
-	$(CXX) $(CXXFLAGS) mover.cpp -c -o$(OBJDIR)/mover.o
+$(OBJDIR)/mover.o: $(INCLUDEDIR)/mover.h $(SRCDIR)/mover.cpp
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/mover.cpp -c -o$(OBJDIR)/mover.o
 
-$(OBJDIR)/geom.o: geom.h geom.cpp
-	$(CXX) $(CXXFLAGS) geom.cpp -c -o$(OBJDIR)/geom.o
+$(OBJDIR)/geom.o: $(INCLUDEDIR)/geom.h $(SRCDIR)/geom.cpp
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/geom.cpp -c -o$(OBJDIR)/geom.o
 
-$(OBJDIR)/polyhedron.o: polyhedron.h polyhedron.cpp
-	$(CXX) $(CXXFLAGS) polyhedron.cpp -c -o$(OBJDIR)/polyhedron.o
+$(OBJDIR)/polyhedron.o: $(INCLUDEDIR)/polyhedron.h $(SRCDIR)/polyhedron.cpp
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/polyhedron.cpp -c -o$(OBJDIR)/polyhedron.o
 
-$(OBJDIR)/glmodule.o: glmodule.cpp glvars.h glheader.h
-	$(CXX) $(CXXFLAGS) glmodule.cpp -c -o$(OBJDIR)/glmodule.o
+$(OBJDIR)/glmodule.o: $(SRCDIR)/glmodule.cpp $(INCLUDEDIR)/glvars.h $(INCLUDEDIR)/glheader.h
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/glmodule.cpp -c -o$(OBJDIR)/glmodule.o
 
-$(OBJDIR)/render.o: render.cpp render.h
-	$(CXX) $(CXXFLAGS) render.cpp -c -o$(OBJDIR)/render.o
+$(OBJDIR)/render.o: $(SRCDIR)/render.cpp $(INCLUDEDIR)/render.h
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/render.cpp -c -o$(OBJDIR)/render.o
 
-$(OBJDIR)/main.o: main.cpp
-	$(CXX) $(CXXFLAGS) main.cpp -c -o$(OBJDIR)/main.o
+$(OBJDIR)/main.o: $(SRCDIR)/main.cpp
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/main.cpp -c -o$(OBJDIR)/main.o
 
 clear:
 	rm -Rf $(OBJDIR)
