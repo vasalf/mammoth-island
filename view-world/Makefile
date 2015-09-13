@@ -3,7 +3,7 @@ SRCDIR=src
 INCLUDEDIR=$(SRCDIR)/include
 CXXFLAGS=-Wall -Wextra -Werror -Wshadow --std=c++11 -g  -march=native -pipe -lGL -lGLU -lglut -lGLEW -I$(INCLUDEDIR)
 OBJDIR=obj
-OBJS=$(OBJDIR)/matrix.o $(OBJDIR)/mover.o $(OBJDIR)/geom.o $(OBJDIR)/polyhedron.o $(OBJDIR)/glmodule.o $(OBJDIR)/render.o $(OBJDIR)/main.o
+OBJS=$(OBJDIR)/matrix.o $(OBJDIR)/mover.o $(OBJDIR)/geom.o $(OBJDIR)/polyhedron.o $(OBJDIR)/glmodule.o $(OBJDIR)/render.o $(OBJDIR)/main.o $(OBJDIR)/world.o
 
 
 all: view-world
@@ -35,6 +35,9 @@ $(OBJDIR)/render.o: $(SRCDIR)/render.cpp $(INCLUDEDIR)/render.h
 $(OBJDIR)/main.o: $(SRCDIR)/main.cpp
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/main.cpp -c -o$(OBJDIR)/main.o
 
-clear:
+$(OBJDIR)/world.o: $(SRCDIR)/world.cpp $(INCLUDEDIR)/world.h
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/world.cpp -c -o$(OBJDIR)/world.o
+
+clean:
 	rm -Rf $(OBJDIR)
 	rm -Rf view-world
