@@ -36,7 +36,7 @@ void World::SetField(int x, int y, int z, char val)
 {
     int index = x * height * depth + y * depth + z;
     if (index % 2)
-        data[index / 2] = get_first_info(data[index / 2]) | val;
+        data[index / 2] = (get_first_info(data[index / 2]) << 4) | val;
     else
         data[index / 2] = (val << 4) | get_second_info(data[index / 2]);
 }

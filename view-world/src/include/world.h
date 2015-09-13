@@ -16,8 +16,8 @@
 class World
 {
     char* data;
-    int height, width, depth;
   public:
+    int height, width, depth;
     World(std::string filename);
     char GetField(int x, int y, int z);
 };
