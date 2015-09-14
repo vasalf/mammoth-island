@@ -30,6 +30,8 @@ void DrawWorld(World w)
                     Polyhedron p(cube(x, y, z));
                     p.GetMover().SetScale(1.0f / (float)max(w.width, w.height));
                     p.GetMover().SetPosition(vect(-0.5, -0.5, -0.5));
+                //    if ((x + y) % 2)
+                //        p[5].color = vect(0, 1, 0);
                     AlivePolyhedrons.push_back(p);
                 }
             }

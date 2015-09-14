@@ -17,6 +17,7 @@ class Polygon
     Mover* mvr;
     GLuint VBO;
   public:
+    vect color;
     Polygon();
     Polygon(std::vector<vect> _poly, Mover* _mover);
     void __draw() const;

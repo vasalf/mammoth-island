@@ -8,6 +8,7 @@
 using namespace std;
 
 GLuint glWorldLocation;
+GLuint glInputColorLocation;
 
 static void init_glut_cb()
 {
@@ -85,6 +86,8 @@ void compile_shaders(string vsh_filename, string fsh_filename)
 
     glWorldLocation = glGetUniformLocation(sprog, "glWorld");
     assert(glWorldLocation != 0xffffffff);
+    glInputColorLocation = glGetUniformLocation(sprog, "InputColor");
+    assert(glInputColorLocation != 0xffffffff);
 }
 
 

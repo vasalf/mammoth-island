@@ -4,5 +4,6 @@
 #include "glinclude.h"
 
 extern GLuint glWorldLocation;
+extern GLuint glInputColorLocation;
 
 #endif //GLVARS_H_

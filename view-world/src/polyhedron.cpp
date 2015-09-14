@@ -6,6 +6,7 @@ Polygon::Polygon() {}
 
 Polygon::Polygon(std::vector<vect> _poly, Mover* _mover)
 {
+    color = vect(1, 0, 0);
     poly = _poly;
     mvr = _mover;
     vect a[poly.size()];
@@ -20,6 +21,7 @@ void Polygon::__draw() const
 {
     Matrix position = mvr->GetMatrix();
     glUniformMatrix4fv(glWorldLocation, 1, GL_TRUE, &position.m[0][0]);
+    glUniform4f(glInputColorLocation, color.x, color.y, color.z, 1);
 
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -47,7 +49,10 @@ Polyhedron::Polyhedron(const Polyhedron& other)
     mvr = other.mvr;
     surfaces.resize(other.surfaces.size());
     for (int i = 0; i < (int)surfaces.size(); i++)
+    {
         surfaces[i] = Polygon(other.surfaces[i].__get_poly(), &mvr);
+        surfaces[i].color = other.surfaces[i].color;
+    }
 }
 
 const Polygon& Polyhedron::operator[](const int& i) const

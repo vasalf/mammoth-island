@@ -1,4 +1,6 @@
+uniform vec4 InputColor;
+
 void main()
 {
-    gl_FragColor.rgba = vec4(1.0, 0.0, 0.0, 1.0);
+    gl_FragColor.rgba = InputColor;
 }
