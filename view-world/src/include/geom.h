@@ -9,4 +9,7 @@ struct vect
     vect& operator+=(const vect& other);
 };
 
+vect operator*(const float& f, const vect& v);
+vect operator*(const vect& v, const float& f);
+
 #endif //GEOM_H_

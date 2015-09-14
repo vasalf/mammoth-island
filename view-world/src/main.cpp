@@ -2,6 +2,7 @@
 #include "polyhedron.h"
 #include "render.h"
 #include "world.h"
+#include "draw_world.h"
 #include <iostream>
 
 using namespace std;
@@ -21,11 +22,14 @@ int main(int argc, char** argv)
         cout << endl;
     }
     init_gl(&argc, argv);
-/*    glClearColor(0, 0, 0, 0);
+    glClearColor(0, 0, 0, 0);
     compile_shaders("./shaders/vertex-shader.vsh", "./shaders/fragment-shader.fsh"); 
 
-    Polyhedron p({{vect(0, 0, 0), vect(1, 0, 0), vect(0, 1, 0)}});
-    AlivePolyhedrons.push_back(p);
-    glutMainLoop();*/
+    //Polyhedron p({{vect(0, 0, 0), vect(1, 0, 0), vect(0, 1, 0)}});
+    //AlivePolyhedrons.push_back(p);
+    
+    DrawWorld(w);
+
+    glutMainLoop();
     return 0;
 }

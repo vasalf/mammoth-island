@@ -85,5 +85,5 @@ float Mover::GetScale() const
 
 Matrix Mover::GetMatrix() const
 {
-   return ScaleMatrix(scale) * XAngleMatrix(xang) * YAngleMatrix(yang) * ZAngleMatrix(zang) * PositionMatrix(position); 
+   return ScaleMatrix(scale) * XAngleMatrix(xang) * YAngleMatrix(yang) * ZAngleMatrix(zang) * PositionMatrix(position * (1.0f / scale)); 
 }

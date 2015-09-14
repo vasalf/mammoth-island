@@ -17,3 +17,13 @@ vect& vect::operator+=(const vect& other)
     z += other.z;
     return *this;
 }
+
+vect operator*(const float& f, const vect& v)
+{
+    return vect(f * v.x, f * v.y, f * v.z);
+}
+
+vect operator*(const vect& v, const float& f)
+{
+    return vect(f * v.x, f * v.y, f * v.z);
+}
