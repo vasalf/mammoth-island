@@ -75,3 +75,12 @@ Matrix PositionMatrix(vect v)
     res[2][3] = v.z;
     return res;
 }
+
+Matrix Transpose(Matrix x)
+{
+    Matrix res;
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
+            res[i][j] = x[j][i];
+    return res;
+}

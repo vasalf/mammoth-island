@@ -20,7 +20,9 @@ Polygon::Polygon(std::vector<vect> _poly, Mover* _mover)
 void Polygon::__draw() const
 {
     Matrix position = mvr->GetMatrix();
+    Matrix perspective = PerspectiveMatrix();
     glUniformMatrix4fv(glWorldLocation, 1, GL_TRUE, &position.m[0][0]);
+    glUniformMatrix4fv(glProjLocation, 1, GL_TRUE, &perspective.m[0][0]);
     glUniform4f(glInputColorLocation, color.x, color.y, color.z, 1);
 
     glEnableVertexAttribArray(0);

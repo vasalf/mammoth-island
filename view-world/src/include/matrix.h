@@ -20,4 +20,6 @@ Matrix ZAngleMatrix(float ang);
 
 Matrix PositionMatrix(vect v);
 
+Matrix Transpose(Matrix x);
+
 #endif //MATRIX_H_

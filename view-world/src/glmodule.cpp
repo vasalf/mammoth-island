@@ -1,6 +1,7 @@
 #include <fstream>
 #include <cstring>
 #include <cassert>
+#include <cmath>
 #include <iostream>
 #include "glheader.h"
 #include "glvars.h"
@@ -9,6 +10,12 @@ using namespace std;
 
 GLuint glWorldLocation;
 GLuint glInputColorLocation;
+GLuint glProjLocation;
+
+float glRatio;
+float glZNear;
+float glZFar;
+float glAngle;
 
 static void init_glut_cb()
 {
@@ -26,6 +33,14 @@ void init_gl(int* argc, char** argv)
 
     init_glut_cb();
     assert(glewInit() == GLEW_OK);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+
+    glRatio = 1024.0f / 768.0f;
+    glZNear = 0.1f;
+    glZFar = 100.0f;
+    glAngle = M_PI / 6;
 }
 
 static string read_file(string filename)
@@ -88,6 +103,19 @@ void compile_shaders(string vsh_filename, string fsh_filename)
     assert(glWorldLocation != 0xffffffff);
     glInputColorLocation = glGetUniformLocation(sprog, "InputColor");
     assert(glInputColorLocation != 0xffffffff);
+    glProjLocation = glGetUniformLocation(sprog, "glProj");
+    assert(glProjLocation != 0xffffffff);
 }
 
-
+Matrix PerspectiveMatrix()
+{
+    Matrix res;
+//    return res;
+    res[0][0] = 1.0f / (glRatio * tanf(glAngle / 2.0f));
+    res[1][1] = 1.0f / (tanf(glAngle / 2.0f));
+    res[2][2] = -(glZNear + glZFar) / (glZNear - glZFar);
+    res[2][3] = 2 * glZFar * glZNear / (glZNear - glZFar);
+    res[3][2] = 1;
+    res[3][3] = 0;
+    return res;
+}
