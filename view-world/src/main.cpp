@@ -47,6 +47,7 @@ int main(int argc, char** argv)
         {
             v.x -= 0.5;
             v.y -= 0.5;
+            v.z -= 0.5;
         }
     AlivePolyhedrons.push_back(Polyhedron(vv));
     //AlivePolyhedrons[0][5].color = vect(0, 1, 0);
