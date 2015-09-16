@@ -5,6 +5,7 @@
 #include <iostream>
 #include "glheader.h"
 #include "glvars.h"
+#include "camera.h"
 
 using namespace std;
 
@@ -21,6 +22,8 @@ static void init_glut_cb()
 {
     glutDisplayFunc(render_scene); 
     glutIdleFunc(render_scene);
+    glutSpecialFunc(SpecialKeyHandler);
+    glutPassiveMotionFunc(MouseHandler);
 }
 
 void init_gl(int* argc, char** argv)
@@ -41,6 +44,8 @@ void init_gl(int* argc, char** argv)
     glZNear = 0.1f;
     glZFar = 100.0f;
     glAngle = M_PI / 6;
+    
+    camera = CameraMover(1024, 768);
 }
 
 static string read_file(string filename)

@@ -3,7 +3,7 @@ SRCDIR=src
 INCLUDEDIR=$(SRCDIR)/include
 CXXFLAGS=-Wall -Wextra -Werror -Wshadow --std=c++11 -g  -march=native -pipe -lGL -lGLU -lglut -lGLEW -I$(INCLUDEDIR)
 OBJDIR=obj
-OBJS=$(OBJDIR)/matrix.o $(OBJDIR)/mover.o $(OBJDIR)/geom.o $(OBJDIR)/polyhedron.o $(OBJDIR)/glmodule.o $(OBJDIR)/render.o $(OBJDIR)/main.o $(OBJDIR)/world.o $(OBJDIR)/draw_world.o
+OBJS=$(OBJDIR)/matrix.o $(OBJDIR)/mover.o $(OBJDIR)/geom.o $(OBJDIR)/polyhedron.o $(OBJDIR)/glmodule.o $(OBJDIR)/render.o $(OBJDIR)/main.o $(OBJDIR)/world.o $(OBJDIR)/draw_world.o $(OBJDIR)/camera.o
 
 
 all: view-world
@@ -40,6 +40,9 @@ $(OBJDIR)/world.o: $(SRCDIR)/world.cpp $(INCLUDEDIR)/world.h
 
 $(OBJDIR)/draw_world.o: $(SRCDIR)/draw_world.cpp $(INCLUDEDIR)/draw_world.h
 	$(CXX) $(CXXFLAGS) $(SRCDIR)/draw_world.cpp -c -o$(OBJDIR)/draw_world.o
+
+$(OBJDIR)/camera.o: $(SRCDIR)/camera.cpp $(INCLUDEDIR)/camera.h
+	$(CXX) $(CXXFLAGS) $(SRCDIR)/camera.cpp -c -o$(OBJDIR)/camera.o
 
 clean:
 	rm -Rf $(OBJDIR)

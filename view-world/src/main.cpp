@@ -52,7 +52,7 @@ int main(int argc, char** argv)
     AlivePolyhedrons.push_back(Polyhedron(vv));
     //AlivePolyhedrons[0][5].color = vect(0, 1, 0);
     //AlivePolyhedrons[0].GetMover().SetScale(0.5);
-    AlivePolyhedrons[0].GetMover().SetPosition(vect(0, 0, 5));
+    AlivePolyhedrons[0].GetMover().SetPosition(vect(0, 0, 3));
     AlivePolyhedrons[0][1].color = vect(1, 0, 1);
     AlivePolyhedrons[0][2].color = vect(1, 1, 0);
     AlivePolyhedrons[0][3].color = vect(0, 1, 1);
