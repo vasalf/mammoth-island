@@ -1,6 +1,7 @@
 #include "camera.h"
 #include "glinclude.h"
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 
@@ -12,7 +13,7 @@ CameraMover::CameraMover(int width, int height)
 {
     w = width;
     h = height;
-    xvect = vect(1, 0, 0);
+    xvect = vect(-1, 0, 0);
     yvect = vect(0, 1, 0);
     zvect = vect(0, 0, 1);
     horizontal_angle = 0;
@@ -31,7 +32,7 @@ Matrix CameraMover::GetMatrix()
     return res * PositionMatrix(position); 
 }
 
-static const float step_size = 0.1;
+static const float step_size = 0.3;
 
 void SpecialKeyHandler(int key, int x, int y)
 {
@@ -65,7 +66,30 @@ void MouseHandler(int x, int y)
     camera.mouse.x = x;
     camera.mouse.y = y;
     camera.horizontal_angle -= angle_step_size * dx;
-    camera.vertical_angle += angle_step_size * dy;
+    camera.vertical_angle -= angle_step_size * dy;
+    camera.update();
+}
+
+void KeyboardHandler(unsigned char key, int x, int y)
+{
+    x += y;
+    switch(key)
+    {
+      case 'w':
+        camera.vertical_angle += angle_step_size * 5;
+        break;
+      case 's':
+        camera.vertical_angle -= angle_step_size * 5;
+        break;
+      case 'a':
+        camera.horizontal_angle += angle_step_size * 5;
+        break;
+      case 'd':
+        camera.horizontal_angle -= angle_step_size * 5;
+        break;
+      default:
+        return;
+    }
     camera.update();
 }
 
@@ -73,13 +97,13 @@ void CameraMover::OnRender()
 {
     bool should_update = true;
     if (mouse.x >= w - margin)
-        horizontal_angle -= angle_step_size;
+        horizontal_angle -= angle_step_size * 5;
     else if (mouse.x <= margin)
-        horizontal_angle += angle_step_size;
+        horizontal_angle += angle_step_size * 5;
     else if (mouse.y >= h - margin)
-        vertical_angle += angle_step_size;
+        vertical_angle += angle_step_size * 5;
     else if (mouse.y <= margin)
-        vertical_angle -= angle_step_size;
+        vertical_angle -= angle_step_size * 5;
     else
         should_update = false;
     if (should_update)
@@ -132,6 +156,6 @@ void CameraMover::update()
    zvect = Normalized(rotate(vect(1, 0, 0), horizontal_angle, vect(0, 1, 0)));
    xvect = Normalized(CrossProduct(vect(0, 1, 0), zvect));
    zvect = Normalized(rotate(zvect, vertical_angle, xvect));
-   yvect = Normalized(CrossProduct(xvect, zvect));
+   yvect = Normalized(CrossProduct(zvect, xvect));
 }
 

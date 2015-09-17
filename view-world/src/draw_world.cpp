@@ -28,10 +28,14 @@ void DrawWorld(World w)
                 if (w.GetField(x, y, z) == FIELDTYPE_STONE)
                 {
                     Polyhedron p(cube(x, y, z));
-                    p.GetMover().SetScale(1.0f / (float)max(w.width, w.height));
-                    p.GetMover().SetPosition(vect(-0.5, -0.5, -0.5));
+                    p.GetMover().SetPosition(vect(0, 0, 5));
                 //    if ((x + y) % 2)
                 //        p[5].color = vect(0, 1, 0);
+                    p[1].color = vect(1, 0, 1);
+                    p[2].color = vect(1, 1, 0);
+                    p[3].color = vect(0, 1, 1);
+                    p[4].color = vect(0, 0, 1);
+                    p[5].color = vect(0, 1, 0);
                     AlivePolyhedrons.push_back(p);
                 }
             }

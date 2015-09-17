@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-    /*World w(argv[1]);
+    World w(argv[1]);
     cout << w.height << " " << w.width << " " << w.depth << endl;
     for (int x = 0; x < w.width; x++)
     {
@@ -20,7 +20,7 @@ int main(int argc, char** argv)
             cout << mx << " ";
         }
         cout << endl;
-    }*/
+    }
     init_gl(&argc, argv);
     glClearColor(0, 0, 0, 0);
     compile_shaders("./shaders/vertex-shader.vsh", "./shaders/fragment-shader.fsh"); 
@@ -28,15 +28,14 @@ int main(int argc, char** argv)
     //Polyhedron p({{vect(0, 0, 0), vect(1, 0, 0), vect(0, 1, 0)}});
     //AlivePolyhedrons.push_back(p);
     
-//    DrawWorld(w);
 
-/*    vector<vect> pts = {vect(-1, -1, 0.5773f), vect(0, -1, -1.15475), vect(1, -1, 0.5773), vect(0, 1, 0)};
+    /*vector<vect> pts = {vect(-1, -1, 0.5773f), vect(0, -1, -1.15475), vect(1, -1, 0.5773), vect(0, 1, 0)};
 
     AlivePolyhedrons.push_back(Polyhedron({{pts[0], pts[3], pts[1]}, {pts[1], pts[3], pts[2]}, {pts[2], pts[3], pts[0]}, {pts[0], pts[2], pts[1]}}));
 
     AlivePolyhedrons[0].GetMover().SetPosition(vect(0, 0, 5));*/
 
-    vector<vector<vect> > vv = {{vect(0, 0, 0), vect(1, 0, 0), vect(1, 1, 0), vect(0, 1, 0)},
+    /*vector<vector<vect> > vv = {{vect(0, 0, 0), vect(1, 0, 0), vect(1, 1, 0), vect(0, 1, 0)},
     {vect(0, 0, 0), vect(0, 0, 1), vect(0, 1, 1), vect(0, 1, 0)},
     {vect(0, 0, 0), vect(1, 0, 0), vect(1, 0, 1), vect(0, 0, 1)},
     {vect(1, 1, 1), vect(1, 1, 0), vect(0, 1, 0), vect(0, 1, 1)},
@@ -57,8 +56,10 @@ int main(int argc, char** argv)
     AlivePolyhedrons[0][2].color = vect(1, 1, 0);
     AlivePolyhedrons[0][3].color = vect(0, 1, 1);
     AlivePolyhedrons[0][4].color = vect(0, 0, 1);
-    AlivePolyhedrons[0][5].color = vect(0, 1, 0);
+    AlivePolyhedrons[0][5].color = vect(0, 1, 0);*/
 
+    DrawWorld(w);
+    
     glutMainLoop();
     
     return 0;

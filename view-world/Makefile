@@ -1,7 +1,7 @@
 CXX=g++
 SRCDIR=src
 INCLUDEDIR=$(SRCDIR)/include
-CXXFLAGS=-Wall -Wextra -Werror -Wshadow --std=c++11 -g  -march=native -pipe -lGL -lGLU -lglut -lGLEW -I$(INCLUDEDIR)
+CXXFLAGS=-Wall -Wextra -Werror -Wshadow --std=c++11 -O2  -march=native -pipe -lGL -lGLU -lglut -lGLEW -I$(INCLUDEDIR)
 OBJDIR=obj
 OBJS=$(OBJDIR)/matrix.o $(OBJDIR)/mover.o $(OBJDIR)/geom.o $(OBJDIR)/polyhedron.o $(OBJDIR)/glmodule.o $(OBJDIR)/render.o $(OBJDIR)/main.o $(OBJDIR)/world.o $(OBJDIR)/draw_world.o $(OBJDIR)/camera.o
 

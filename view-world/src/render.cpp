@@ -5,7 +5,7 @@
 
 std::vector<Polyhedron> AlivePolyhedrons;
 
-static float f = 0;
+//static float f = 0;
 
 void render_scene()
 {
@@ -13,9 +13,9 @@ void render_scene()
     camera.OnRender();
     for (Polyhedron& p : AlivePolyhedrons)
         p.Draw();
-    f += 0.01;
+    /*f += 0.01;
     AlivePolyhedrons[0].GetMover().SetXAngle(sinf(f));
     AlivePolyhedrons[0].GetMover().SetYAngle(sinf(f));
-    AlivePolyhedrons[0].GetMover().SetZAngle(sinf(f));
+    AlivePolyhedrons[0].GetMover().SetZAngle(sinf(f));*/
     glutSwapBuffers();
 }

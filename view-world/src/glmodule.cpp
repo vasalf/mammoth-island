@@ -24,6 +24,7 @@ static void init_glut_cb()
     glutIdleFunc(render_scene);
     glutSpecialFunc(SpecialKeyHandler);
     glutPassiveMotionFunc(MouseHandler);
+    glutKeyboardFunc(KeyboardHandler);
 }
 
 void init_gl(int* argc, char** argv)

@@ -25,5 +25,6 @@ extern CameraMover camera;
 
 void SpecialKeyHandler(int key, int x, int y);
 void MouseHandler(int x, int y);
+void KeyboardHandler(unsigned char key, int x, int y);
 
 #endif //CAMERA_H_

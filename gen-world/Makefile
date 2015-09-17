@@ -1,7 +1,7 @@
 CXX=g++
 SRCDIR=src
 INCLUDEDIR=$(SRCDIR)/include
-CXXFLAGS=-Wall -Wextra -Werror -Wshadow --std=c++11 -g  -march=native -pipe -I$(INCLUDEDIR)
+CXXFLAGS=-Wall -Wextra -Werror -Wshadow --std=c++11 -O2  -march=native -pipe -I$(INCLUDEDIR)
 OBJDIR=obj
 OBJS=$(OBJDIR)/main.o $(OBJDIR)/world.o
 GENERATORS=gen-random gen-gradient
